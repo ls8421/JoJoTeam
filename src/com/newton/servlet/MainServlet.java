@@ -11,12 +11,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.newton.dto.Person;
+import com.newton.servlet.abstracts.AbstractServlet;
 
-public class MainServlet extends HttpServlet {
+public class MainServlet extends AbstractServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		// Check session
+		checkValidSession(req, resp);
 		
 		List<Person> personList = new ArrayList<>();
 		personList.add(Person.create(1, "pcj", "010-0000-1111"));
